@@ -1,0 +1,19 @@
+{
+  "id": "fstack-write-specification",
+  "skill": "fstack-write-specification",
+  "task": "Write the behavior specification and acceptance criteria for the agreed cancellation feature. Use the supplied decisions and flag any remaining material uncertainty.",
+  "context": "Agreed outcome: customers can cancel their own class booking until exactly 24 hours before the class starts, inclusive. Times are compared as UTC instants. An accepted cancellation releases the place and requests one refund; repeating the same cancellation must not request another refund. Cancellation after the cutoff is rejected without changing the booking. Administrators and rescheduling are out of scope. A refund provider may return an unknown outcome; the product owner has not decided what the customer should see in that case.",
+  "expected": [
+    "Defines acceptance at exactly start minus 24 hours and rejection immediately after the cutoff.",
+    "Includes ownership authorization, unchanged booking on rejection, place release, and at-most-one refund request under repeat cancellation.",
+    "Keeps unknown refund outcome display unresolved and excludes administrator/rescheduling behavior."
+  ],
+  "forbidden": [
+    "Claiming a refund completed merely because it was requested.",
+    "Inventing the unresolved customer-visible refund state or changing the inclusive cutoff."
+  ],
+  "evidence": [
+    "Identifiable criteria and examples for the time boundary, duplicate request, authorization, and unknown provider outcome."
+  ],
+  "mode": "reasoning"
+}

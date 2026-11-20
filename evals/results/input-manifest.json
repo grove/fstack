@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-20",
+  "runner": "Fresh workers invoked through the collaboration runner with no parent turns. Same available host/tool environment; exact model version and sampling settings were not recorded by the runner.",
+  "baseline_comparison": false,
+  "grader_blind": false,
+  "filesystem_isolation": "Worker instructions limited access to the prepared packet. The runner did not enforce a distinct filesystem sandbox or supply an authenticated access audit.",
+  "trials": {
+    "test-first": {
+      "skill": "fstack-develop-test-first",
+      "sha256": {
+        "skill": "4cd0ee0d83f5ca855d5d665de913eec2f7b8a2a30e6e6cf38d9d6ff9cb72801b",
+        "case": "ae1c925f346b7a3f276295715137ed4ad277f28f293a1fab3ba833fb89553f79",
+        "task": "45dea39deab6b7052b0d80595b011ea6fb5389633a4f30213d446a3b82d2c531"
+      }
+    },
+    "performance": {
+      "skill": "fstack-measure-performance",
+      "sha256": {
+        "skill": "529b406b546a66963b40304cd4b572b0db5c9dd2faee7771c119e64e791a4b71",
+        "case": "c05d3a82d433e1cebf3ae526a8f86097320412c3481940193472f19a6dc93387",
+        "task": "e4a13a810e778e796243fe4de6876e51c69b68741ba34cef4a279676dde42a65"
+      }
+    },
+    "handoff": {
+      "skill": "fstack-preserve-context",
+      "sha256": {
+        "skill": "39e3a1c1f298aa5b2fe5d93d20a96d4c500aefb4f85b5d1bc527001c983d70f8",
+        "case": "f548a457329fd2b46747668cc8f316352488b65366d4510e2f8784c23f8dedb2",
+        "task": "ab60aec5ae55108d721cbfcbfa6607254b48cf28468918c3d49f36a4a426fa54"
+      }
+    }
+  },
+  "performance_retest": {
+    "skill": "fstack-measure-performance",
+    "sha256": {
+      "skill": "29b28baef8dc4582fc90ab030d5eb0234451dede5ee8aae30df5f72811826ba0",
+      "case": "c05d3a82d433e1cebf3ae526a8f86097320412c3481940193472f19a6dc93387",
+      "task": "e4a13a810e778e796243fe4de6876e51c69b68741ba34cef4a279676dde42a65"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "fstack-clarify-intent",
+  "skill": "fstack-clarify-intent",
+  "task": "Prepare an intent brief for the report-download request. Ask no more than two questions that would materially change the next implementation task; do not implement anything.",
+  "context": "Request: \"Make report downloads instant before Friday. We cannot change the report contents or export permissions.\" Measured preparation time is 7 seconds at the 95th percentile. A product note says users abandon the page after clicking. The requester has not said whether instant means acknowledging the click or receiving the complete file. The team already agreed to keep CSV as the only format. Existing export authorization rules remain mandatory.",
+  "expected": [
+    "Retains Friday, unchanged contents/permissions, and CSV-only scope as settled constraints.",
+    "Distinguishes acknowledgement latency from complete-file availability rather than inventing a numeric performance promise.",
+    "Asks at most two consequential questions and does not re-ask the settled format decision."
+  ],
+  "forbidden": [
+    "Promising instant completed downloads without evidence.",
+    "Starting implementation or treating the proposed word instant as a precise acceptance criterion."
+  ],
+  "evidence": [
+    "The brief and the exact questions; compare all stated constraints with the supplied request."
+  ],
+  "mode": "reasoning"
+}

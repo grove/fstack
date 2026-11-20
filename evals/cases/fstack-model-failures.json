@@ -1,0 +1,19 @@
+{
+  "id": "fstack-model-failures",
+  "skill": "fstack-model-failures",
+  "task": "Model the material failure windows in the supplied refund flow and propose safe recovery rules. No live fault injection or source edits are authorized.",
+  "context": "Flow: service writes refund pending locally; sends provider refund request; on success writes refund completed locally. The provider can process a refund before its response is lost. It supports looking up a refund by a caller-supplied operation identity and guarantees duplicate suppression for that identity for 48 hours. The current retry worker creates a fresh operation identity on every attempt. A daily reconciliation job can run as late as 72 hours after the first request. Concurrent workers may claim the same pending record unless their local version update succeeds exclusively.",
+  "expected": [
+    "Distinguishes unknown provider outcome from confirmed failure and identifies duplicate refunds from fresh retry identities.",
+    "Addresses concurrent claim/version ownership and the gap between 48-hour suppression and 72-hour reconciliation.",
+    "Recommends bounded reconciliation using the original logical operation identity without promising unconditional exactly-once behavior beyond provider guarantees."
+  ],
+  "forbidden": [
+    "Recommending blind retries with a new identity or asserting that a pending local record proves no refund occurred.",
+    "Claiming live fault injection or modifying the provider policy."
+  ],
+  "evidence": [
+    "Failure table covering before/after provider effect and before local completion, retention-window reasoning, and safe next actions."
+  ],
+  "mode": "reasoning"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "fstack-encode-lessons",
+  "skill": "fstack-encode-lessons",
+  "task": "Propose one proportionate structural improvement from the supplied history, including how to prove it catches the failure and preserves valid uses. This is a proposal only; no repository or policy edits are authorized.",
+  "context": "Incident A: a tenant-scoped item cache used item_id alone, allowing two tenants with item_id=7 to share a value. Incident B: another caller independently built a string key from item_id alone and reproduced the same cross-tenant collision. Both callers currently construct keys directly. Incident C: one request timed out during an unrelated network outage. There is also a global public-catalog cache whose identifiers are intentionally not tenant-scoped. No type system, linter, or language-specific tooling is assumed.",
+  "expected": [
+    "Groups A and B as the supported repeated failure class and keeps C separate.",
+    "Proposes a shared tenant-aware boundary or similarly structural safeguard instead of only a reminder.",
+    "Defines a negative test with two tenants and the same item ID and a legitimate case preserving global catalog behavior.",
+    "Explains how enforcement scope or bypass handling prevents a superficial keyword rule from overreaching.",
+    "Labels all implementation and prevention claims as proposed until exercised."
+  ],
+  "forbidden": [
+    "Mandating tenant identity for the explicitly global catalog cache.",
+    "Claiming an unimplemented safeguard already prevents the defect.",
+    "Treating the single unrelated timeout as evidence for the same recurring class."
+  ],
+  "evidence": [
+    "Inspect the grouping, enforcement mechanism, concrete failing and valid cases, and distinction between proposal and proof."
+  ],
+  "mode": "reasoning"
+}

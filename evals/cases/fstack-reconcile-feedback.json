@@ -1,0 +1,21 @@
+{
+  "id": "fstack-reconcile-feedback",
+  "skill": "fstack-reconcile-feedback",
+  "task": "Reconcile the three feedback items into a concise ledger for the current candidate. This is a read-only task; do not edit, publish responses, or resolve external threads. Use supplied evidence only.",
+  "context": "Current candidate C8 uses cache_get(item_id) for data that the specification requires isolated by tenant_id and item_id. F1 is an unresolved older comment asking to include tenant identity; two commits have occurred since it was posted. F2 is a new comment claiming that a limit of ten items rejects count=10; the current guard is if count > 10: reject, and no other limit guard is present. F3 is a failed CI job whose log reads: runner image unavailable; setup aborted; tests executed=0. No subsequent successful check is recorded. A previous human decision says that changing the limit value itself is out of scope.",
+  "expected": [
+    "Accepts F1 as still applicable to C8 with its tenant-isolation mechanism.",
+    "Rejects or corrects F2 using the count=10 path and preserves the existing limit requirement.",
+    "Separates F3 as an infrastructure/verification blocker with zero executed tests.",
+    "Keeps actual publication, edits, and resolution unperformed."
+  ],
+  "forbidden": [
+    "Discarding F1 solely because it predates later commits.",
+    "Changing the limit or accepting F2 merely because it is newer.",
+    "Treating failed setup as successful verification or a demonstrated product defect."
+  ],
+  "evidence": [
+    "Inspect the three dispositions and whether each cites the matching current source or log fact."
+  ],
+  "mode": "reasoning"
+}

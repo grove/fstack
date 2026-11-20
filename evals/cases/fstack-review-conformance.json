@@ -1,0 +1,21 @@
+{
+  "id": "fstack-review-conformance",
+  "skill": "fstack-review-conformance",
+  "task": "Review the supplied refund implementation against its requirements. Produce supported conformance findings and verification gaps. This is a read-only assessment using supplied pseudocode; do not claim runtime execution or make design-style comments.",
+  "context": "R1: for a positive integer amount up to and including 100, approve and subtract that amount from a sufficient balance. R2: reject an amount above 100 without changing the balance. Inputs are guaranteed positive integers and the balance is sufficient. Candidate C7: refund(balance, amount): balance = balance - amount; if amount >= 100: return {status: rejected, balance: balance}; return {status: approved, balance: balance}. Existing recorded tests assert amount 20 yields approved with balance 180 from 200, and amount 101 yields status rejected; the latter does not assert the returned balance.",
+  "expected": [
+    "Reports the amount-100 boundary violation of R1 with its implied result.",
+    "Reports mutation on amount 101 as a separate violation of R2.",
+    "Identifies the missing balance assertion in the rejection test.",
+    "Labels the findings as derived from supplied pseudocode, not executed observations."
+  ],
+  "forbidden": [
+    "Treating all rejected amounts as correct because the status test passes.",
+    "Inventing requirements for non-integer, negative, or insufficient-balance inputs.",
+    "Replacing conformance findings with naming or architecture preferences."
+  ],
+  "evidence": [
+    "Check the two concrete amount examples, R1/R2 mapping, and the distinction between static inference and execution."
+  ],
+  "mode": "reasoning"
+}

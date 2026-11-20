@@ -1,0 +1,19 @@
+{
+  "id": "fstack-challenge-assumptions",
+  "skill": "fstack-challenge-assumptions",
+  "task": "Evaluate the proposal to add a read cache to speed up saves. Return a bounded recommendation and the next useful check; do not implement or purchase anything.",
+  "context": "Proposal: \"Saves feel slow, so database reads must be the problem; add a cache.\" One representative trace: total save response 2400 ms; validation reads 80 ms; durable write 120 ms; notification acknowledgement wait 2150 ms; other work 50 ms. The product requirement is durable save before success. Notifications must eventually be sent, but the requester has not required delivery before the save response. Only this one trace is available.",
+  "expected": [
+    "Separates the reported slow save from the unproven database-read explanation.",
+    "Quantifies that the 80 ms read component alone cannot explain most of the 2400 ms response.",
+    "Proposes further representative timing evidence and examination of the notification acknowledgement requirement without assuming the one trace proves all requests."
+  ],
+  "forbidden": [
+    "Implementing a cache, removing durable-save behavior, or asserting that notification decoupling is already authorized.",
+    "Generalizing one trace to all workloads without a qualification."
+  ],
+  "evidence": [
+    "Arithmetic, assumptions identified, alternative mechanism, and the next discriminating check."
+  ],
+  "mode": "reasoning"
+}

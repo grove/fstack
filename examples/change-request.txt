@@ -1,0 +1,5 @@
+We want account owners to receive one confirmation when they change their display name.
+The existing event delivery system can deliver the same event more than once.
+Clarify the acceptance criteria and consequential unknowns before implementation.
+Do not assume a specific language, framework, queue, identity provider, or issue tracker.
+This task authorizes analysis and a written brief only; do not edit code or send messages.

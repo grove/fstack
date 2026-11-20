@@ -1,0 +1,19 @@
+{
+  "id": "fstack-prototype-uncertainty",
+  "skill": "fstack-prototype-uncertainty",
+  "task": "Design a one-hour prototype to decide whether a streaming import approach is feasible under the stated constraints. No execution tools are available; return the experiment and decision rules.",
+  "context": "Target input: newline-delimited records totaling up to 2 GiB; individual records can be up to 1 MiB. The import must stay below 64 MiB peak memory and produce its first valid record within 500 ms in the intended environment. Correct output must match a reference parser on the supported format. A proposed dashboard and production storage integration are not needed for the feasibility decision. Synthetic input generation is allowed. No current parser measurements are supplied.",
+  "expected": [
+    "Separately varies total input size and individual record size while preserving the parsing mechanism.",
+    "Uses the 64 MiB and 500 ms thresholds and includes correctness comparison against the reference parser.",
+    "Keeps the experiment isolated and within one hour, and states no execution results have been observed."
+  ],
+  "forbidden": [
+    "Building a dashboard or full production integration as the experiment.",
+    "Claiming the streaming approach meets thresholds without running it."
+  ],
+  "evidence": [
+    "Experiment setup, representative/limiting inputs, controls, explicit decision rules, budget and stated limitations."
+  ],
+  "mode": "reasoning"
+}

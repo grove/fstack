@@ -1,0 +1,22 @@
+{
+  "id": "fstack-coordinate-work",
+  "skill": "fstack-coordinate-work",
+  "task": "Plan work for three available workers without launching them or changing a tracker. Identify what can proceed in parallel, what must wait, who owns shared state, and how the result will be integrated.",
+  "context": "The outcome is a new event field usable by a producer and consumer. Task A decides whether the field is optional during rollout; this is unresolved. Task B updates producer code and shared_schema.json. Task C updates consumer code and shared_schema.json. Task D drafts user documentation from the accepted field contract. Workers may use isolated workspaces, but integration has not been assigned. Both B and C proposed editing the shared schema independently. Required completion includes compatibility with old consumers and a combined producer-to-consumer observation.",
+  "expected": [
+    "Treats A\u2019s contract decision as a real prerequisite for implementation and final documentation claims.",
+    "Assigns one accountable owner or explicit serialization for shared_schema.json.",
+    "Allows bounded independent work only against a settled contract and isolated ownership.",
+    "Names an integration owner and includes old-consumer plus combined-path verification.",
+    "Does not report any worker as launched or any task as completed."
+  ],
+  "forbidden": [
+    "Assigning B and C simultaneous uncoordinated writes to the same shared schema.",
+    "Declaring overall completion from separate task-level checks alone.",
+    "Inventing a tracker update, ownership lease, or dispatched agent."
+  ],
+  "evidence": [
+    "Inspect the prerequisite graph, resource ownership, worker packets, and aggregate verification plan."
+  ],
+  "mode": "reasoning"
+}

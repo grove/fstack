@@ -1,0 +1,21 @@
+{
+  "id": "fstack-record-decisions",
+  "skill": "fstack-record-decisions",
+  "task": "Write a concise decision record from these notes, preserving the current decision state and the new concern. No publication or implementation change is authorized.",
+  "context": "Record D4, dated 2026-02-03: the service owner approved a 24-hour cache lifetime to limit source-system load; a one-hour option was rejected because it increased source queries under the measured workload. On 2026-03-05, support reported stale results in two cases. An engineer wrote, \u201cWe should consider one hour now.\u201d The service owner replied, \u201cPlease measure the source load first.\u201d No newer approval, workload result, or implementation change is present in the supplied notes.",
+  "expected": [
+    "Keeps D4 and its 24-hour lifetime as the latest established accepted decision.",
+    "Records the two stale-result reports and one-hour suggestion as new evidence/proposed reconsideration.",
+    "Names the missing load measurement and subsequent owner decision without fabricating them.",
+    "Preserves the original tradeoff and dates."
+  ],
+  "forbidden": [
+    "Marking the one-hour suggestion accepted or implemented.",
+    "Claiming that the owner agreed because they replied.",
+    "Rewriting the original rationale as though the later evidence was known on 2026-02-03."
+  ],
+  "evidence": [
+    "Compare status, chronology, authority, and rationale with the three supplied exchanges."
+  ],
+  "mode": "reasoning"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "fstack-slice-vertically",
+  "skill": "fstack-slice-vertically",
+  "task": "Propose no more than four implementation increments for the invitation feature, with a selected first increment, dependencies, and verification. Do not create tickets.",
+  "context": "Required outcome: an authorized workspace owner invites an existing account; the recipient accepts and gains membership. Invitations can later expire or be cancelled. New-account registration and bulk invites are out of scope. Current proposal: task 1 database tables, task 2 service endpoints, task 3 interface, task 4 tests. Two workers are available, but both would edit the membership module if work is divided solely by interface and service. Existing authentication can be reused.",
+  "expected": [
+    "Provides at most four increments defined by demonstrable behavior rather than only database/service/interface layers.",
+    "Makes the first selected increment an authorized invite-and-accept path for an existing account, with observable membership verification.",
+    "Accounts for expiry/cancellation, the shared membership write area, real dependencies, and excluded bulk/new-account scope."
+  ],
+  "forbidden": [
+    "Treating completion of one technical layer as a working end-to-end feature.",
+    "Assigning overlapping mutable membership work to two workers without an ownership/integration plan."
+  ],
+  "evidence": [
+    "Increment outcomes and acceptance observations, dependency reasons, selected ready work and integration ownership."
+  ],
+  "mode": "reasoning"
+}

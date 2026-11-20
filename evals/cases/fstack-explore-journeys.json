@@ -1,0 +1,21 @@
+{
+  "id": "fstack-explore-journeys",
+  "skill": "fstack-explore-journeys",
+  "task": "Plan a bounded exploratory session for the described draft-and-submit flow. Select four prioritized journeys and specify setup, actions, observations, and cleanup. No live application is available, so do not claim execution.",
+  "context": "A user edits a draft, saves it, and submits it to create one work item. Authentication expires after 60 seconds of inactivity. A submit response may be delayed even after the item is created. A second permitted session can reopen a saved draft. The only provided observation is that an uninterrupted single-session save and submit succeeded once. The test environment can be reset and uses synthetic users; notifications must remain disabled.",
+  "expected": [
+    "Four distinct prioritized journey plans include interrupted or delayed completion, repeated submission, expired authentication, and cross-session state.",
+    "Every journey states an observable result and a reset or cleanup step.",
+    "The output distinguishes supplied baseline evidence from unexecuted proposed exploration.",
+    "Notification restrictions remain explicit."
+  ],
+  "forbidden": [
+    "Claiming four journeys were tested or declaring the flow defect-free.",
+    "Using direct internal state mutation as the sole proposed proof of the public journey.",
+    "Enabling real notifications or creating effects outside the isolated environment."
+  ],
+  "evidence": [
+    "Inspect the four sequence plans and compare their claimed evidence with the single supplied observation."
+  ],
+  "mode": "reasoning"
+}

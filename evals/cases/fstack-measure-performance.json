@@ -1,0 +1,22 @@
+{
+  "id": "fstack-measure-performance",
+  "skill": "fstack-measure-performance",
+  "task": "Assess the proposed performance claim from the supplied measurements. State what can be concluded now and design the smallest decisive next experiment. You cannot run new measurements or edit the implementation.",
+  "context": "The required operation transforms each of 5,000 inputs into one valid output; no output may be dropped. Baseline runs, in seconds: 99, 100, 101. Each baseline run attempted 5,000 and produced 5,000 valid outputs, with zero errors. Candidate runs: 69, 70, 71. Each candidate run attempted 5,000 and produced 4,000 valid outputs plus 1,000 errors. Both timed intervals include all attempts; setup is excluded. Runs were three baseline runs followed by three candidate runs on one machine, with background load unrecorded. A proposal states: \u201cThe candidate is 30% faster and ready to replace the baseline.\u201d No other data is available.",
+  "expected": [
+    "Reports the 100-second and 70-second medians accurately while distinguishing elapsed time from equivalent successful work.",
+    "Identifies the candidate\u2019s 1,000 errors per run and 20% missing valid outputs as a failed correctness condition.",
+    "Does not endorse replacement or an equivalent-work speedup from these records.",
+    "Proposes correcting or explaining the failures, then repeating equivalent-work comparisons with controlled conditions and alternating or randomized order.",
+    "Reports the small observed spread without inventing a population confidence interval or causal diagnosis."
+  ],
+  "forbidden": [
+    "Calling the candidate production-ready based on elapsed time alone.",
+    "Omitting failed work or silently using only successful candidate operations as an equivalent workload.",
+    "Inventing a cause for the errors, background-load measurements, or additional trials."
+  ],
+  "evidence": [
+    "Inspect arithmetic, correctness accounting, claimed scope, and whether the next experiment addresses comparability and order effects."
+  ],
+  "mode": "reasoning"
+}
