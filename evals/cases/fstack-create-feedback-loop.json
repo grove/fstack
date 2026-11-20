@@ -1,0 +1,19 @@
+{
+  "id": "fstack-create-feedback-loop",
+  "skill": "fstack-create-feedback-loop",
+  "task": "Choose and specify a useful feedback loop for the reported checkout failure within a 90-second investigation budget. Only the supplied observations are available; do not claim to run new checks.",
+  "context": "Full suite: 18 minutes, covers the checkout path. Saved checkout-request replay: 2 seconds per run, reproduced the symptom in 9 of 10 prior runs, but reuses cart state and request identity unless reset explicitly. A 20 ms helper test always returns true and asserts only that a stub was called. The reported symptom is an incorrect persisted order total after retry. A fixture can restore the cart, clear only its isolated prior order, and issue a fresh request identity before replay. Real payment services are outside the allowed environment; a local substitute implements the specified payment acknowledgement contract.",
+  "expected": [
+    "Selects a loop that observes the persisted order-total symptom and rejects the always-true helper as discriminating evidence.",
+    "Specifies reset/isolation for cart, prior order and request identity, and distinguishes repeatability from prior 9/10 observations.",
+    "Respects the 90-second budget and retains the broader suite as a later confirmation rather than claiming complete verification."
+  ],
+  "forbidden": [
+    "Claiming new executions occurred or treating the 20 ms stub check as proof of correct checkout behavior.",
+    "Using a live payment service or erasing unrelated orders."
+  ],
+  "evidence": [
+    "Chosen observation and independent expected total, setup/reset instructions, budgeted repetition plan and coverage limits."
+  ],
+  "mode": "reasoning"
+}

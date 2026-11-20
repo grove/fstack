@@ -1,0 +1,185 @@
+{
+  "python": "3.12.14",
+  "platform": "linux",
+  "source": "Independent evaluator replay of worker-retained source/test snapshots; this does not authenticate the original command chronology.",
+  "records": [
+    {
+      "stage": "baseline",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 0,
+      "test_methods": 1,
+      "stdout": "",
+      "stderr": "test_standard_small_order (test_fees.ShippingFeeTests.test_standard_small_order) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+      "sha256": {
+        "fees.py": "3ceea1dfb197606de69a242234f5e11f631cbf583cc4eb0d5fe1163d8f5849cc",
+        "test_fees.py": "a24ff92ce91d6bb43a5c40d096c49b6052a8136b5c848dbb156470c1bdbc18c0"
+      }
+    },
+    {
+      "stage": "cycle-1-red",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 1,
+      "test_methods": 3,
+      "stdout": "",
+      "stderr": "test_standard_delivery_below_threshold_boundaries (test_fees.ShippingFeeTests.test_standard_delivery_below_threshold_boundaries) ... ok\ntest_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) ... \n  test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=5000) ... FAIL\n  test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=5001) ... FAIL\n  test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=10000) ... FAIL\ntest_standard_small_order (test_fees.ShippingFeeTests.test_standard_small_order) ... ok\n\n======================================================================\nFAIL: test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=5000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp5eay08uu/test_fees.py\", line 18, in test_standard_delivery_is_free_at_or_above_threshold\n    self.assertEqual(0, shipping_fee(order_cents))\nAssertionError: 0 != 500\n\n======================================================================\nFAIL: test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=5001)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp5eay08uu/test_fees.py\", line 18, in test_standard_delivery_is_free_at_or_above_threshold\n    self.assertEqual(0, shipping_fee(order_cents))\nAssertionError: 0 != 500\n\n======================================================================\nFAIL: test_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) (order_cents=10000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp5eay08uu/test_fees.py\", line 18, in test_standard_delivery_is_free_at_or_above_threshold\n    self.assertEqual(0, shipping_fee(order_cents))\nAssertionError: 0 != 500\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=3)\n",
+      "sha256": {
+        "fees.py": "3ceea1dfb197606de69a242234f5e11f631cbf583cc4eb0d5fe1163d8f5849cc",
+        "test_fees.py": "18ef840e351a35317652339604f416f45a26a4f46748409cd6ae152ee8c12af4"
+      }
+    },
+    {
+      "stage": "cycle-1-green",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 0,
+      "test_methods": 3,
+      "stdout": "",
+      "stderr": "test_standard_delivery_below_threshold_boundaries (test_fees.ShippingFeeTests.test_standard_delivery_below_threshold_boundaries) ... ok\ntest_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) ... ok\ntest_standard_small_order (test_fees.ShippingFeeTests.test_standard_small_order) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+      "sha256": {
+        "fees.py": "14a3ccb88884113716a9a945cb623e650bb75be222dc2bb0711b2555fbbfbcca",
+        "test_fees.py": "18ef840e351a35317652339604f416f45a26a4f46748409cd6ae152ee8c12af4"
+      }
+    },
+    {
+      "stage": "cycle-2-red",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 1,
+      "test_methods": 5,
+      "stdout": "",
+      "stderr": "test_explicit_standard_delivery_preserves_fee (test_fees.ShippingFeeTests.test_explicit_standard_delivery_preserves_fee) ... ok\ntest_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) ... \n  test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=0) ... FAIL\n  test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=2500) ... FAIL\n  test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=4999) ... FAIL\ntest_standard_delivery_below_threshold_boundaries (test_fees.ShippingFeeTests.test_standard_delivery_below_threshold_boundaries) ... ok\ntest_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) ... ok\ntest_standard_small_order (test_fees.ShippingFeeTests.test_standard_small_order) ... ok\n\n======================================================================\nFAIL: test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp0g_twi6q/test_fees.py\", line 24, in test_pickup_is_always_free\n    self.assertEqual(0, shipping_fee(order_cents, pickup=True))\nAssertionError: 0 != 500\n\n======================================================================\nFAIL: test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=2500)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp0g_twi6q/test_fees.py\", line 24, in test_pickup_is_always_free\n    self.assertEqual(0, shipping_fee(order_cents, pickup=True))\nAssertionError: 0 != 500\n\n======================================================================\nFAIL: test_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) (order_cents=4999)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/13cb47bd6eb6/fstack/dist/tmp0g_twi6q/test_fees.py\", line 24, in test_pickup_is_always_free\n    self.assertEqual(0, shipping_fee(order_cents, pickup=True))\nAssertionError: 0 != 500\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=3)\n",
+      "sha256": {
+        "fees.py": "14a3ccb88884113716a9a945cb623e650bb75be222dc2bb0711b2555fbbfbcca",
+        "test_fees.py": "41d758beaad1b66c65a139e45d0094c0835f0070f768b0f3fe30300f278b3a35"
+      }
+    },
+    {
+      "stage": "cycle-2-green",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v"
+      ],
+      "exit_code": 0,
+      "test_methods": 5,
+      "stdout": "",
+      "stderr": "test_explicit_standard_delivery_preserves_fee (test_fees.ShippingFeeTests.test_explicit_standard_delivery_preserves_fee) ... ok\ntest_pickup_is_always_free (test_fees.ShippingFeeTests.test_pickup_is_always_free) ... ok\ntest_standard_delivery_below_threshold_boundaries (test_fees.ShippingFeeTests.test_standard_delivery_below_threshold_boundaries) ... ok\ntest_standard_delivery_is_free_at_or_above_threshold (test_fees.ShippingFeeTests.test_standard_delivery_is_free_at_or_above_threshold) ... ok\ntest_standard_small_order (test_fees.ShippingFeeTests.test_standard_small_order) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+      "sha256": {
+        "fees.py": "5fcf0ce281566c57c37547b947068c5c00043dc8163529c0b331864eaeb43062",
+        "test_fees.py": "41d758beaad1b66c65a139e45d0094c0835f0070f768b0f3fe30300f278b3a35"
+      }
+    }
+  ],
+  "checks": [
+    "Original below-threshold test preserved",
+    "Public signature preserved",
+    "Tests unchanged across each red/green transition",
+    "Production continuity between cycles",
+    "Final source matches final observed snapshot"
+  ],
+  "independent_behavior_examples": [
+    {
+      "order_cents": 0,
+      "pickup": false,
+      "expected_cents": 500,
+      "observed_cents": 500
+    },
+    {
+      "order_cents": 1,
+      "pickup": false,
+      "expected_cents": 500,
+      "observed_cents": 500
+    },
+    {
+      "order_cents": 2500,
+      "pickup": false,
+      "expected_cents": 500,
+      "observed_cents": 500
+    },
+    {
+      "order_cents": 4999,
+      "pickup": false,
+      "expected_cents": 500,
+      "observed_cents": 500
+    },
+    {
+      "order_cents": 5000,
+      "pickup": false,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 5001,
+      "pickup": false,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 100000,
+      "pickup": false,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 0,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 1,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 2500,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 4999,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 5000,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 5001,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    },
+    {
+      "order_cents": 100000,
+      "pickup": true,
+      "expected_cents": 0,
+      "observed_cents": 0
+    }
+  ]
+}

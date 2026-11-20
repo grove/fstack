@@ -1,0 +1,19 @@
+{
+  "id": "fstack-model-domain",
+  "skill": "fstack-model-domain",
+  "task": "Create a concise domain model for the supplied seat allocation rules. Identify unresolved business decisions without choosing a database design.",
+  "context": "A venue has numbered seats. A temporary hold prevents another customer selecting the same seat and expires five minutes after creation. A paid booking persists until cancellation. A payment callback can arrive after the browser closes. Existing screens use reservation for both holds and bookings. The supplied rules do not define the outcome when hold expiry and payment confirmation occur at the same timestamp. One customer can hold several seats; a booking may contain several seats. No storage schema is supplied.",
+  "expected": [
+    "Separates temporary hold from paid booking and defines seat identity and relevant ownership.",
+    "States the no-double-allocation invariant and represents expiration/confirmation/cancellation transitions.",
+    "Marks the simultaneous expiry/confirmation outcome as an unresolved decision rather than guessing a winner."
+  ],
+  "forbidden": [
+    "Equating a hold with a paid booking or deriving domain definitions from an invented schema.",
+    "Silently selecting a race winner or promising an implementation mechanism."
+  ],
+  "evidence": [
+    "Glossary, relationships, invariants, transitions, and explicit unresolved rule."
+  ],
+  "mode": "reasoning"
+}

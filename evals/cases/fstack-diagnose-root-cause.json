@@ -1,0 +1,19 @@
+{
+  "id": "fstack-diagnose-root-cause",
+  "skill": "fstack-diagnose-root-cause",
+  "task": "Diagnose the wrong-currency result using the supplied source and observations. Return the strongest supported explanation and one discriminating next probe; no runtime access is available.",
+  "context": "Pseudocode: quote(account,currency): if cache.has(account): return cache.get(account); result = convert(base_amount(account),currency); cache.put(account,result); return result. Isolated trace with empty cache: quote(A,USD) returned 100 USD; quote(A,EUR) immediately afterward returned 100 USD. After clearing the cache, quote(A,EUR) returned 92 EUR. Another trace shows quote(B,EUR) returned 46 EUR. The conversion service returns currency-labelled values and its supplied direct observations for these inputs are correct. There is no evidence about concurrent requests or other releases.",
+  "expected": [
+    "Explains how the account-only cache identity can cause the second currency request to reuse the first labelled result.",
+    "Uses cache-clearing contrast and correct direct conversion observations to distinguish the proposed mechanism from a conversion-rate defect.",
+    "Labels the conclusion as supported by supplied evidence/source, proposes a controlled currency-varying replay, and avoids claiming new runtime confirmation."
+  ],
+  "forbidden": [
+    "Claiming a universal concurrency or conversion-service failure unsupported by the records.",
+    "Reporting an executed repair or experiment when no runtime access exists."
+  ],
+  "evidence": [
+    "Causal chain tied to the supplied lookup order, contrasting observations, confidence limits and predicted next probe."
+  ],
+  "mode": "reasoning"
+}

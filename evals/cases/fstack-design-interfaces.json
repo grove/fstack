@@ -1,0 +1,19 @@
+{
+  "id": "fstack-design-interfaces",
+  "skill": "fstack-design-interfaces",
+  "task": "Propose a better caller-facing boundary for inventory reservation. Show two caller examples and one consequential error contract; do not implement it.",
+  "context": "Three callers currently perform connect, begin transaction, check available quantity, decrement quantity, insert reservation, commit, and disconnect. Two callers forgot disconnect after an exception. Each request includes tenant identity and a stable request identity. A network failure during commit can leave the commit outcome unknown. The only current storage implementation is the existing database, and no replacement is planned. Existing callers need a confirmed reservation identity or an honest account of why confirmation is unavailable.",
+  "expected": [
+    "Moves coherent reservation invariants and connection/transaction lifetime under a clear owner.",
+    "Preserves tenant/request identity and distinguishes unknown commit outcome from confirmed rejection.",
+    "Provides two usable caller examples and avoids unnecessary pluggable storage architecture for a hypothetical future implementation."
+  ],
+  "forbidden": [
+    "Returning unconditional failure for an unknown commit then recommending an unqualified new retry identity.",
+    "Hiding identity or cleanup obligations behind undocumented global state."
+  ],
+  "evidence": [
+    "Caller examples, full error/lifetime contract, ownership reasoning, and compatibility considerations."
+  ],
+  "mode": "reasoning"
+}

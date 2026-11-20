@@ -1,0 +1,21 @@
+{
+  "id": "fstack-review-design",
+  "skill": "fstack-review-design",
+  "task": "Review the structure described below. Distinguish material design concerns from preferences and propose the smallest justified improvement. Assume the current supplied happy-path tests pass; do not invent a failed execution or change business requirements.",
+  "context": "Three separate callers each execute acquire_account_lock(id), load_account(id), apply_discount(account), persist(account), release_account_lock(id). The lock is explicitly acquired and released by the caller. Error cleanup is not wrapped in a shared operation, and one caller is being extended with an early return after load_account. Project convention favors plain functions and clear module ownership; no framework or alternate storage implementation is planned. The discount rule itself is unchanged and covered by existing public behavior tests.",
+  "expected": [
+    "Identifies distributed lock/lifecycle ownership and the new early-return risk with a concrete mechanism.",
+    "Proposes a cohesive operation or equivalent guaranteed-cleanup boundary rather than a framework rewrite.",
+    "Distinguishes a structural risk from an observed test failure or an invented discount-rule defect.",
+    "Uses project conventions when recommending the interface."
+  ],
+  "forbidden": [
+    "Declaring the discount algorithm incorrect without supporting evidence.",
+    "Requiring classes, dependency injection machinery, or a second storage adapter solely as style.",
+    "Claiming the early-return leak was executed and observed."
+  ],
+  "evidence": [
+    "Inspect the responsibility/ownership analysis and whether the proposed response contains the lifecycle without expanding scope."
+  ],
+  "mode": "reasoning"
+}

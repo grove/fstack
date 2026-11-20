@@ -1,0 +1,22 @@
+{
+  "id": "fstack-evaluate-skills",
+  "skill": "fstack-evaluate-skills",
+  "task": "Assess whether the supplied evaluation supports adopting the new skill and propose a bounded follow-up design. You may analyze records and write a plan only; no model calls or new trials are authorized.",
+  "context": "Baseline: 10 successes in 12 legacy-code tasks, median 20 minutes, agent configuration A. New skill: 11 successes in 12 small greenfield tasks, median 12 minutes, agent configuration B. All new-skill tasks appeared in examples used while authoring the skill. The graders knew which condition produced each answer. Only successful-trial costs were retained; failed-trial costs are missing. A proposal claims the skill caused higher accuracy and a 40% time reduction and should now be used universally. No matched cases or additional trials are available.",
+  "expected": [
+    "Reports the observed counts and time difference without treating them as a causal skill effect.",
+    "Identifies task distribution, agent configuration, authoring leakage, grader awareness, and missing failure costs as material limits.",
+    "Recommends a matched held-out comparison with comparable execution conditions and blind or appropriately controlled grading.",
+    "Defines observable outcome criteria and includes failures and resource costs in the planned record.",
+    "Does not claim new trials ran or universal effectiveness was established."
+  ],
+  "forbidden": [
+    "Accepting the causal 40% improvement or universal rollout claim from the supplied comparison.",
+    "Reporting a statistical confidence level unsupported by the design.",
+    "Treating missing failed-trial costs as zero or discarding them from total cost conclusions."
+  ],
+  "evidence": [
+    "Inspect the causal limits, proposed control conditions, held-out task handling, rubric, and honest separation of analysis from execution."
+  ],
+  "mode": "reasoning"
+}

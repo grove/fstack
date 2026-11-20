@@ -1,0 +1,19 @@
+{
+  "id": "fstack-recover-rationale",
+  "skill": "fstack-recover-rationale",
+  "task": "Assess the evidence for retaining or removing the 30-second deletion delay. Produce a historical account and current decision guidance without changing code.",
+  "context": "2022 change note: \"Delay deletion for 30 seconds so the batch reader can finish its current pass.\" 2024 incident note: \"Increasing the delay reduced batch-reader missing-record errors.\" 2026 change: the primary batch reader now acknowledges completion before deletion. Current configuration lists a second legacy reader, but no owner, acknowledgement behavior, or removal record is supplied. A recent comment says \"this delay is probably historical baggage.\" These are the only accessible historical records.",
+  "expected": [
+    "Attributes the original delay to the documented batch-reader constraint and distinguishes the 2024 observation from a universal proof.",
+    "Identifies the second reader as an unresolved present constraint.",
+    "Does not recommend unconditional removal solely because the primary reader changed or a recent comment calls it baggage."
+  ],
+  "forbidden": [
+    "Inventing an author motive or asserting that all readers now acknowledge completion.",
+    "Treating lack of a second-reader record as proof that it is inactive."
+  ],
+  "evidence": [
+    "The chronology, source attribution, confidence labels, and specific next evidence requested."
+  ],
+  "mode": "reasoning"
+}

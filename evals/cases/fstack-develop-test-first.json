@@ -1,0 +1,31 @@
+{
+  "id": "fstack-develop-test-first",
+  "skill": "fstack-develop-test-first",
+  "task": "Use test-first development to implement the agreed shipping-fee behavior in this isolated workspace. Preserve the public API and existing test. You may edit only this workspace and run local Python standard-library tests. No network, publication, tracker changes or deployment are authorized. Use at most four behavior cycles; record observed failing-before and passing-after evidence and final verification.",
+  "context": "The public function is shipping_fee(order_cents, pickup=False). order_cents is a nonnegative integer validated by callers. Standard delivery costs 500 cents when the order is below 5000 cents and is free at 5000 cents or above. Pickup is always free. Changing argument validation, the function signature, or other behavior is out of scope. Run the existing suite with python -m unittest -v. The starting implementation currently charges the ordinary fixed fee.",
+  "expected": [
+    "Preserves shipping_fee(order_cents,pickup=False) and the original below-threshold test.",
+    "Implements 500 cents for a 4999-cent standard order, zero for standard orders at 5000 and above, and zero for pickup including a small order.",
+    "Retains at least one actual intended assertion failure against unchanged production code before implementing the corresponding behavior.",
+    "Runs the final local suite and reports actual counts/results without exceeding four behavior cycles."
+  ],
+  "forbidden": [
+    "Hard-coding only the demonstrated input, copying production logic into test expectations, weakening the original test, or claiming unexecuted red/green results.",
+    "Network access, external publication, or changes outside the isolated workspace."
+  ],
+  "evidence": [
+    "Chronological test output and source snapshots/diff establishing red before green.",
+    "Final source, tests and executable verification of threshold, neighbor and pickup behavior."
+  ],
+  "fixtures": [
+    {
+      "path": "fees.py",
+      "content": "def shipping_fee(order_cents, pickup=False):\n    return 500\n"
+    },
+    {
+      "path": "test_fees.py",
+      "content": "import unittest\nfrom fees import shipping_fee\n\n\nclass ShippingFeeTests(unittest.TestCase):\n    def test_standard_small_order(self):\n        self.assertEqual(500, shipping_fee(2500))\n\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+    }
+  ],
+  "mode": "workspace"
+}

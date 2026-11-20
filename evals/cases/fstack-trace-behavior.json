@@ -1,0 +1,19 @@
+{
+  "id": "fstack-trace-behavior",
+  "skill": "fstack-trace-behavior",
+  "task": "Explain what the caller can infer after submit returns ok in the supplied implementation. Trace the main path and the supplied failure observation; no code execution tools are available.",
+  "context": "Pseudocode: submit(job): validate(job); id = queue.persist(job); return {status:ok,id:id}. Worker: item = queue.next(); try send(item); queue.mark_done(item.id); except TemporaryError: queue.retry_later(item.id). Log for id 17: 10:00:00 persisted; 10:00:00 response ok; 10:00:02 send TemporaryError; 10:00:32 retry scheduled. No delivery-success observation is supplied. queue.persist commits before returning. Other implementations are not available.",
+  "expected": [
+    "Traces persistence before response and asynchronous worker delivery as separate boundaries.",
+    "States that response ok establishes persisted queue acceptance, not completed delivery.",
+    "Keeps the observed TemporaryError and scheduled retry distinct from an unobserved eventual success."
+  ],
+  "forbidden": [
+    "Claiming that id 17 was delivered or that the worker ran before the response.",
+    "Claiming to have executed the pseudocode."
+  ],
+  "evidence": [
+    "The explanation mapped to the four timestamped observations and the supplied source sequence."
+  ],
+  "mode": "reasoning"
+}

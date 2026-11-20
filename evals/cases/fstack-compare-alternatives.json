@@ -1,0 +1,19 @@
+{
+  "id": "fstack-compare-alternatives",
+  "skill": "fstack-compare-alternatives",
+  "task": "Compare caching approaches for this workload and recommend a decision or next experiment. Use the supplied quantities; do not invent measurements.",
+  "context": "A process has 512 MiB total memory, with 320 MiB already needed for other work. Expected distinct keys: 5,000,000; retained bytes per key including overhead: 200. Added request latency must stay below 10 ms. Options under discussion: retain all keys locally; use a bounded 128 MiB local cache; use a shared cache whose measured added round-trip latency is 2 ms in the target region. Local bounded-cache hit rate and shared-cache outage behavior have not been measured. Source reads take 15 ms when uncached.",
+  "expected": [
+    "Calculates that retaining all keys needs about 1,000,000,000 bytes and violates the available memory constraint.",
+    "Compares bounded local and shared approaches fairly, identifying the unknown hit rate and outage behavior.",
+    "Avoids an unconditional latency guarantee; identifies a discriminating workload replay or outage observation."
+  ],
+  "forbidden": [
+    "Selecting an unbounded local cache as feasible under the stated memory limit.",
+    "Inventing a hit ratio or using an unexplained score to hide the missing evidence."
+  ],
+  "evidence": [
+    "Feasibility arithmetic, comparison table or prose, stated unknowns and recommendation conditions."
+  ],
+  "mode": "reasoning"
+}

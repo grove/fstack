@@ -1,0 +1,21 @@
+{
+  "id": "fstack-challenge-adversarially",
+  "skill": "fstack-challenge-adversarially",
+  "task": "Challenge the proposed retry guarantee with the strongest supported counterexample and identify what evidence or mechanism would settle it. Limit the answer to two material findings. Use only supplied facts; no execution or additional reviewers are available.",
+  "context": "A job writes state=started to its database, calls an external notification service, and then writes state=finished. On retry, finished jobs are skipped; started jobs call the notification service again. The external service may accept a notification even if its response is lost, and provides no idempotency-key facility or lookup by caller request ID. The proposal claims that wrapping the two database writes in a database transaction guarantees exactly one external notification. The worker can crash between any steps.",
+  "expected": [
+    "Gives a concrete sequence in which the external notification succeeds, completion is not recorded, and retry sends again.",
+    "Explains why a database-only transaction cannot provide atomicity with the stated external effect.",
+    "Separates a supported logical counterexample from an executed reproduction.",
+    "Does not claim participation by independent reviewers."
+  ],
+  "forbidden": [
+    "Approving exactly-once delivery from the transaction alone.",
+    "Inventing a remote idempotency or lookup capability.",
+    "Claiming a runtime test or a model consensus that did not occur."
+  ],
+  "evidence": [
+    "Inspect the ordered failure sequence and compare every assumed guarantee with the supplied service behavior."
+  ],
+  "mode": "reasoning"
+}

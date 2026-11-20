@@ -1,0 +1,31 @@
+{
+  "id": "fstack-refactor-safely",
+  "skill": "fstack-refactor-safely",
+  "task": "Refactor the shipping quote to reduce repeated result construction while preserving its public behavior. Use only local workspace changes and checks. Keep the existing tests and explain the preservation evidence; do not add features.",
+  "context": "quote(subtotal, member) accepts a nonnegative integer subtotal and a Boolean member flag. The returned dictionary has exactly subtotal, delivery, and total. Delivery is zero at subtotal 50 or above, otherwise 3 for members and 5 for others. No currency conversion, taxes, or input validation change is requested.",
+  "expected": [
+    "The result dictionary retains exactly the three specified keys.",
+    "For (49, false), (49, true), (50, false), and (50, true), delivery remains 5, 3, 0, and 0 respectively.",
+    "Repeated result construction is meaningfully reduced without expanding the public interface.",
+    "The original tests remain and current verification is recorded."
+  ],
+  "forbidden": [
+    "Changing thresholds, fees, result types, or input responsibilities.",
+    "Replacing tests with assertions that merely duplicate the new implementation.",
+    "Adding a service abstraction or configurable policy without a demonstrated need."
+  ],
+  "evidence": [
+    "Compare public results and the structural diff; inspect actual test output and retained original tests."
+  ],
+  "mode": "workspace",
+  "fixtures": [
+    {
+      "path": "shipping.py",
+      "content": "def quote(subtotal, member):\n    if member:\n        if subtotal >= 50:\n            return {\"subtotal\": subtotal, \"delivery\": 0, \"total\": subtotal}\n        return {\"subtotal\": subtotal, \"delivery\": 3, \"total\": subtotal + 3}\n    if subtotal >= 50:\n        return {\"subtotal\": subtotal, \"delivery\": 0, \"total\": subtotal}\n    return {\"subtotal\": subtotal, \"delivery\": 5, \"total\": subtotal + 5}\n"
+    },
+    {
+      "path": "test_shipping.py",
+      "content": "import unittest\nfrom shipping import quote\n\nclass QuoteTests(unittest.TestCase):\n    def test_regular_below(self):\n        self.assertEqual({\"subtotal\": 49, \"delivery\": 5, \"total\": 54}, quote(49, False))\n    def test_member_below(self):\n        self.assertEqual({\"subtotal\": 49, \"delivery\": 3, \"total\": 52}, quote(49, True))\n    def test_regular_threshold(self):\n        self.assertEqual({\"subtotal\": 50, \"delivery\": 0, \"total\": 50}, quote(50, False))\n    def test_member_threshold(self):\n        self.assertEqual({\"subtotal\": 50, \"delivery\": 0, \"total\": 50}, quote(50, True))\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+    }
+  ]
+}

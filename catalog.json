@@ -1,0 +1,160 @@
+{
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "fstack-clarify-intent",
+      "group": "understanding",
+      "purpose": "resolve consequential unknowns about outcome, constraints and scope"
+    },
+    {
+      "name": "fstack-trace-behavior",
+      "group": "understanding",
+      "purpose": "establish current execution/data flow from actual evidence"
+    },
+    {
+      "name": "fstack-recover-rationale",
+      "group": "understanding",
+      "purpose": "reconstruct historical constraints and decisions without inventing motives"
+    },
+    {
+      "name": "fstack-research-evidence",
+      "group": "understanding",
+      "purpose": "resolve a bounded question with credible, current, conflicting evidence"
+    },
+    {
+      "name": "fstack-challenge-assumptions",
+      "group": "understanding",
+      "purpose": "examine premises before committing to a proposed solution"
+    },
+    {
+      "name": "fstack-model-domain",
+      "group": "design",
+      "purpose": "define shared terms, identities, invariants and transitions"
+    },
+    {
+      "name": "fstack-write-specification",
+      "group": "design",
+      "purpose": "turn an agreed outcome into an observable testable contract"
+    },
+    {
+      "name": "fstack-design-interfaces",
+      "group": "design",
+      "purpose": "contain complexity behind coherent boundaries and caller contracts"
+    },
+    {
+      "name": "fstack-compare-alternatives",
+      "group": "design",
+      "purpose": "compare materially different viable options against explicit criteria"
+    },
+    {
+      "name": "fstack-prototype-uncertainty",
+      "group": "design",
+      "purpose": "choose the cheapest discriminating experiment for a named uncertainty"
+    },
+    {
+      "name": "fstack-model-failures",
+      "group": "design",
+      "purpose": "reason about partial failure, ordering, retries, ownership and recovery"
+    },
+    {
+      "name": "fstack-slice-vertically",
+      "group": "design",
+      "purpose": "plan small demonstrable behavior increments; bounded mechanical migrations are an explicit exception"
+    },
+    {
+      "name": "fstack-create-feedback-loop",
+      "group": "implementation",
+      "purpose": "establish a fast discriminating observation and reset/replay path"
+    },
+    {
+      "name": "fstack-diagnose-root-cause",
+      "group": "implementation",
+      "purpose": "distinguish causal hypotheses using controlled observations"
+    },
+    {
+      "name": "fstack-develop-test-first",
+      "group": "implementation",
+      "purpose": "run one behavior-focused red/green cycle at a time; bounded optional cleanup after green"
+    },
+    {
+      "name": "fstack-make-small-change",
+      "group": "implementation",
+      "purpose": "implement the smallest coherent in-scope behavioral delta"
+    },
+    {
+      "name": "fstack-refactor-safely",
+      "group": "implementation",
+      "purpose": "improve structure while preserving explicit observable contracts"
+    },
+    {
+      "name": "fstack-verify-behavior",
+      "group": "verification",
+      "purpose": "establish completion from requirements and current executed observations"
+    },
+    {
+      "name": "fstack-explore-journeys",
+      "group": "verification",
+      "purpose": "explore realistic stateful paths beyond scripted acceptance"
+    },
+    {
+      "name": "fstack-assess-impact",
+      "group": "verification",
+      "purpose": "trace affected consumers, lifecycle, data, compatibility and rollout boundaries"
+    },
+    {
+      "name": "fstack-review-conformance",
+      "group": "verification",
+      "purpose": "compare candidate with stated requirements independently of design taste"
+    },
+    {
+      "name": "fstack-review-design",
+      "group": "verification",
+      "purpose": "assess ownership, complexity, maintainability and project engineering standards"
+    },
+    {
+      "name": "fstack-challenge-adversarially",
+      "group": "verification",
+      "purpose": "seek plausible counterexamples to a candidate decision or change, with evidence and bounded review"
+    },
+    {
+      "name": "fstack-measure-performance",
+      "group": "verification",
+      "purpose": "make fair reproducible measurements and bounded claims"
+    },
+    {
+      "name": "fstack-record-decisions",
+      "group": "collaboration",
+      "purpose": "preserve consequential decision, alternatives, constraints and rationale"
+    },
+    {
+      "name": "fstack-preserve-context",
+      "group": "collaboration",
+      "purpose": "create a compact verifiable handoff for a worker with no conversation history"
+    },
+    {
+      "name": "fstack-coordinate-work",
+      "group": "collaboration",
+      "purpose": "define ownership, dependencies, isolation and integration across workers (not a live scheduler)"
+    },
+    {
+      "name": "fstack-reconcile-feedback",
+      "group": "collaboration",
+      "purpose": "validate and disposition review feedback and conflicting/new evidence"
+    },
+    {
+      "name": "fstack-communicate-change",
+      "group": "collaboration",
+      "purpose": "write a clear purpose/behavior/evidence/risks handoff or review description, without implicit publication"
+    },
+    {
+      "name": "fstack-encode-lessons",
+      "group": "improvement",
+      "purpose": "turn recurring observed failure classes into tested structural safeguards"
+    },
+    {
+      "name": "fstack-evaluate-skills",
+      "group": "improvement",
+      "purpose": "compare skill effectiveness on controlled representative tasks against a baseline"
+    }
+  ]
+}

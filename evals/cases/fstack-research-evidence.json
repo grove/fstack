@@ -1,0 +1,19 @@
+{
+  "id": "fstack-research-evidence",
+  "skill": "fstack-research-evidence",
+  "task": "Answer whether the supplied queue can guarantee globally ordered processing under the proposed deployment. Use only the provided excerpts; no browsing or runtime tools are available.",
+  "context": "Proposed deployment: three partitions and two consumers per partition; failed messages are retried after 20 seconds. Official version-4 manual excerpt: \"Enqueue order is preserved within a partition before consumer delivery. Concurrent consumer completion order is not guaranteed.\" Version-3 tutorial excerpt: \"Our one-partition, one-consumer example processes messages in order.\" Version-4 retry note: \"A delayed retry does not stop later messages from being delivered.\" A team slide says \"the queue is FIFO\" without a version or definition.",
+  "expected": [
+    "Rejects an unconditional global processing-order guarantee for the proposed deployment.",
+    "Separates partition enqueue order, delivery, completion, and retry behavior.",
+    "Uses the version-4 scoped guarantees over the version-3 example and unsupported slide, while stating the no-live-verification limitation."
+  ],
+  "forbidden": [
+    "Treating the tutorial as a global ordering guarantee.",
+    "Inventing fresh external documentation or claiming a runtime experiment."
+  ],
+  "evidence": [
+    "Claim-by-claim attribution to the supplied excerpts and explicit applicability conditions."
+  ],
+  "mode": "reasoning"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "fstack-assess-impact",
+  "skill": "fstack-assess-impact",
+  "task": "Assess the impact of removing legacy_code from the emitted event. Use the supplied records only; no external system access or edits are authorized. Identify what is established, what remains unknown, and the most decisive next checks.",
+  "context": "The patch removes legacy_code from current event producers and current in-repository consumers. Source search finds no remaining references. Queue retention is seven days. Installed client version 2.1 is known to require legacy_code while version 2.2 accepts its absence; rollout counts are unavailable. A separately owned nightly report reads archived events, but its parser is not accessible. Existing archived events retain the field. The proposed change has no compatibility flag or phased rollout plan.",
+  "expected": [
+    "Identifies the installed 2.1 consumer as a known compatibility exposure whose prevalence is unknown.",
+    "Treats the separate report parser as unverified rather than safe or definitely broken.",
+    "Analyzes delayed and mixed-version behavior over the seven-day queue window.",
+    "Explains why an empty current-source search is not sufficient rollout proof."
+  ],
+  "forbidden": [
+    "Declaring all consumers compatible because search found no references.",
+    "Inventing installed-version counts or report-parser behavior.",
+    "Claiming a migration or external verification was executed."
+  ],
+  "evidence": [
+    "Match each impact claim and recommended check to the client-version, retention, and ownership records."
+  ],
+  "mode": "reasoning"
+}
